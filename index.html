@@ -1,1 +1,175 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOUL NEBULA AI STUDIO</title>
 
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#070b18;
+  color:#f4f6ff;
+}
+header{
+  text-align:center;
+  padding:30px 15px;
+  background:#0d1428;
+  border-bottom:1px solid #273659;
+}
+header h1{color:#69e5ff;letter-spacing:2px}
+header p{color:#aebbd9}
+main{max-width:850px;margin:30px auto;padding:15px}
+.card{
+  background:#10182e;
+  border:1px solid #273659;
+  border-radius:16px;
+  padding:24px;
+  margin-bottom:20px;
+}
+h2{color:#69e5ff}
+label{display:block;margin:16px 0 8px}
+input,select,textarea{
+  width:100%;
+  padding:13px;
+  border:1px solid #344568;
+  border-radius:9px;
+  background:#080f20;
+  color:white;
+  font-size:15px;
+}
+textarea{min-height:120px;line-height:1.8}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+button{
+  width:100%;
+  margin-top:22px;
+  padding:15px;
+  border:0;
+  border-radius:10px;
+  background:linear-gradient(90deg,#31c8e8,#8172ff);
+  color:#07101d;
+  font-weight:bold;
+  font-size:16px;
+  cursor:pointer;
+}
+.note{color:#b6c3df;line-height:1.9}
+#result{
+  display:none;
+  margin-top:20px;
+  padding:15px;
+  background:#080f20;
+  border-radius:10px;
+  white-space:pre-wrap;
+  line-height:1.8;
+  overflow-wrap:anywhere;
+}
+footer{text-align:center;padding:20px;color:#8493b5}
+@media(max-width:600px){.row{grid-template-columns:1fr}}
+</style>
+</head>
+
+<body>
+<header>
+  <h1>SOUL NEBULA</h1>
+  <p>AI MUSIC STUDIO — استوديو صناعة الموسيقى بالذكاء الاصطناعي</p>
+</header>
+
+<main>
+  <section class="card">
+    <h2>🎵 إنشاء مشروع موسيقي</h2>
+    <p class="note">
+      جهّز إعدادات أغنيتك أو موسيقاك الجديدة من مكان واحد.
+    </p>
+
+    <label for="projectName">اسم المشروع</label>
+    <input id="projectName" placeholder="مثال: بينك وبيني">
+
+    <label for="musicType">نوع العمل</label>
+    <select id="musicType">
+      <option value="song">أغنية بصوت وغناء</option>
+      <option value="instrumental">موسيقى بدون غناء</option>
+    </select>
+
+    <div class="row">
+      <div>
+        <label for="genre">النوع الموسيقي</label>
+        <select id="genre">
+          <option>طرب عربي أصيل</option>
+          <option>موسيقى أوركسترالية سينمائية</option>
+          <option>Jazz عربي</option>
+          <option>بيانو هادئ</option>
+          <option>Ambient للاسترخاء</option>
+          <option>موسيقى شرقية عصرية</option>
+          <option>بوب عربي</option>
+        </select>
+      </div>
+      <div>
+        <label for="mood">المزاج</label>
+        <select id="mood">
+          <option>هادئ وروحاني</option>
+          <option>رومانسي وعاطفي</option>
+          <option>حزين ومؤثر</option>
+          <option>ملحمي وفخم</option>
+          <option>مبهج ومتفائل</option>
+          <option>غامض وسينمائي</option>
+        </select>
+      </div>
+    </div>
+
+    <label for="voice">نوع الصوت</label>
+    <select id="voice">
+      <option>صوت رجالي عربي دافئ</option>
+      <option>صوت نسائي عربي قوي</option>
+      <option>صوت رجالي طربي</option>
+      <option>صوت نسائي ناعم</option>
+      <option>بدون صوت بشري</option>
+    </select>
+
+    <label for="lyrics">كلمات الأغنية</label>
+    <textarea id="lyrics" placeholder="اكتب كلمات الأغنية هنا..."></textarea>
+
+    <label for="description">وصف اللحن والتوزيع</label>
+    <textarea id="description" placeholder="مثال: عود وناي وبيانو ووتريات دافئة وإيقاع شرقي هادئ..."></textarea>
+
+    <button id="prepareBtn">تجهيز إعدادات المشروع</button>
+    <div id="result" role="status"></div>
+  </section>
+
+  <section class="card">
+    <h2>🎧 حالة محرك الموسيقى</h2>
+    <p class="note">
+      الواجهة جاهزة للتجربة. محرك توليد الموسيقى غير متصل حتى الآن.
+      يجب ربط الواجهة بمحرك ذكاء اصطناعي فعلي قبل أن تتمكن من
+      إنشاء ملفات صوتية أو تنزيل أغنيات.
+    </p>
+  </section>
+</main>
+
+<footer>SOUL NEBULA AI STUDIO © 2026</footer>
+
+<script>
+document.getElementById("prepareBtn").addEventListener("click",function(){
+  const request={
+    projectName:document.getElementById("projectName").value.trim()||"مشروع جديد",
+    musicType:document.getElementById("musicType").value,
+    genre:document.getElementById("genre").value,
+    mood:document.getElementById("mood").value,
+    voice:document.getElementById("voice").value,
+    lyrics:document.getElementById("lyrics").value.trim(),
+    description:document.getElementById("description").value.trim()
+  };
+
+  const result=document.getElementById("result");
+  result.style.display="block";
+  result.textContent=
+    "تم تجهيز إعدادات المشروع بنجاح.\n\n"+
+    JSON.stringify(request,null,2)+
+    "\n\nتنبيه: لم يتم إنشاء ملف صوتي؛ محرك التوليد غير متصل بعد.";
+});
+</script>
+</body>
+</html>
+```
